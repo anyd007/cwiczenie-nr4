@@ -7,48 +7,54 @@ const one = document.querySelector('.one');
 const two = document.querySelector('.two');
 
 
+const change = () =>{
+    if(one.textContent === '°C'){
+        one.textContent = '°F';
+        two.textContent = '°C';
+    }else{
+        one.textContent = '°C';
+        two.textContent = '°F'
+    }
+    newResult.textContent = '';
+}
+console.log('h1');
 
-const celToFar = () =>{
+
+const conve1 = () =>{
+const fare = newText.value * 1.8 + 32;
+fare.toFixed(1);
+newResult.textContent = `${newText.value} °C, będzie odpowiadać ${fare.toFixed(1)} °F`
+newText.value = '';
+}
+const conve2 = () =>{
+const celc = (newText.value -32) / 1.8;
+newResult.textContent = `${newText.value} °F, będzie odpowiadać ${celc.toFixed(1)} °C`
+newText.value = '';
+}
+
+const convert = () =>{
 if(newText.value !== ''){
-const result = newText.value * 1.8 + 32;
-result.toFixed(1)
-newResult.textContent = `podana temperatura Celcjusza w stopniach Fahrenheita wynosi ${result}`
+    if(one.textContent === '°C'){
+        conve1();
+    }else{
+        conve2();
+    }
 }else{
-    newResult.textContent = 'podaj jakąś wartość';
+    newResult.textContent = 'podaj odpowiednią wartość';
 }
 }
 
-const farToCel = () =>{
-    if(newText.value !== ''){
-    const result2 = newText.value -32 / 1.8;
-    result2.toFixed(1);
-    newResult.textContent = `podana temperatura Fahrenheita w stopniach Celcjusza wynosi ${result2}`;
-}else {
-    newResult.textContent = 'podaj jakąś wartość'
-}
+const res = () =>{
+    newText.value = '';
+    newResult.textContent = '';
 }
 
-const fun2 = () =>{
-    if(newText.value !== ''){
-        newText.value = '';
-        newResult.textContent = ''
-        } 
-}
-
-const fun3 = () =>{
-if(one.textContent === '°C'){
-    one.textContent = '°F'
-    two.textContent = '°C'
-}else{
-    one.textContent = '°C'
-    two.textContent = '°F'
-}
-
-}
+btnConv.addEventListener('click', convert);
+btnChange.addEventListener('click', change);
+btnReset.addEventListener('click', res);
 
 
 
 
-btnChange.addEventListener('click', fun3);
-btnConv.addEventListener('click', celToFar);
-btnReset.addEventListener('click', fun2);
+
+
